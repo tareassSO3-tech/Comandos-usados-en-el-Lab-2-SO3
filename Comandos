@@ -1,0 +1,79 @@
+Comandos Utilizados en las Practicas de los Laboratorios del Modulo 2
+
+==========================
+Practica 1
+==========================
+
+Comando para la actualización de los repositorios del sistema
+sudo apt update && sudo apt upgrade -y
+
+Comando para enumerar los repositorios actualmente en uso en el servidor
+cat  /etc/apt/sources.list.d/*.sources
+
+Comando de busqueda de la herramenta "Bashtop Resource Monitor" en el cache
+apt  search bashtop
+
+Comando para instalar la herramienta "Bashtop Resource Monitor"
+sudo apt install bashtop -y
+
+Comando para eliminar la herramienta "Bashtop Resource Monitor"
+sudo apt purge bashtop -y
+
+Comando para eliminar dependencias
+sudo apt autoremove --purge -y
+
+==========================
+Practica 2
+==========================
+
+Comandos para programar trabajos con cron
+crontab -e
+
+(Dentro de cron)
+minuto-hora-DiaDelMes-mes-DiaDeLaSemana (comando o instrucción)
+
+Comandos utilizados
+0 23 * * * apt update && apt upgrade -y
+0 3 * * 7 /sbin/reboot
+
+Comando para crear una tarea programada con at
+at la-hora-que-quieras
+at now + el-tiempo-que-quieras (iniciando desde 1 minute)
+at> el-comando-que quieras
+
+Comandos utilizados 
+at> rm -rf /tmp/*
+
+=================================
+Practica 3
+=================================
+
+Comando para poder visualizar los discos
+lsblk
+
+Comando para poder crear una particion
+sudo fdisk direccion-disco
+Comando usado 
+sudo fdisk /dev/sdb
+(Dentro de fdisk)
+>n
+>p
+>1
+>
+>
+Estos parametros son para crear una particion nueva, primaria, con el id 1 y con las demas opciones en default.
+
+Comando para formatear una particion en ext4
+sudo mkfs.ext4 direccion-particion
+
+Comando usado
+sudo mkfs.ext4 /dev/sdb1
+
+Comandos para montar y desmontar una unidad
+mount direccion-particion direccion-donde-quieras-montar
+umount direccion-particion
+
+Comandos usado
+mount /dev/sdb1 ./Desktop/mi_prueba
+umount /dev/sdb1
+mount /dev/sdb1 /mnt
